@@ -35,7 +35,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-indigo-100 via-purple-50 to-pink-100 flex items-center justify-center p-4 sm:p-6 md:p-8">
+    <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-indigo-100 via-purple-50 to-pink-100 flex flex-col items-center justify-center p-4 sm:p-6 md:p-8">
       {/* アニメーション背景装飾 */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob"></div>
@@ -43,7 +43,7 @@ export default function Home() {
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob animation-delay-4000"></div>
       </div>
 
-      <main className="relative w-full max-w-2xl backdrop-blur-xl bg-white/70 rounded-3xl shadow-2xl border border-white/20 p-8 sm:p-12 md:p-16 transform transition-all duration-300 hover:shadow-3xl">
+      <main className="relative w-[80%] max-w-6xl backdrop-blur-xl bg-white/70 rounded-3xl shadow-2xl border border-white/20 p-8 sm:p-12 md:p-16 transform transition-all duration-300 hover:shadow-3xl">
         <div className="flex flex-col gap-10">
           {/* 名前 - グラデーションテキスト */}
           <div className="space-y-2">
@@ -111,6 +111,47 @@ export default function Home() {
         </div>
       </main>
 
+      {/* フッター */}
+      <footer className="relative w-[80%] max-w-6xl mt-8 backdrop-blur-xl bg-white/50 rounded-2xl shadow-lg border border-white/20 p-6 sm:p-8">
+        {/* 上部: コピーライト、ライン、ソーシャルアイコン */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-4">
+          {/* 左側: コピーライト */}
+          <div className="flex items-center gap-2 flex-shrink-0">
+            <div className="w-1.5 h-1.5 bg-gradient-to-r from-indigo-500 to-pink-500 rounded-full animate-pulse"></div>
+            <p className="text-sm text-gray-600 font-medium whitespace-nowrap">
+              © {new Date().getFullYear()} All rights reserved
+            </p>
+          </div>
+
+          {/* 中央: 装飾的なライン */}
+          <div className="hidden sm:block flex-1 h-px bg-gradient-to-r from-transparent via-indigo-300 to-transparent mx-4 max-w-xs"></div>
+
+          {/* 右側: ソーシャルアイコン（小さめ） */}
+          <div className="flex items-center gap-3 flex-shrink-0">
+            {socialLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`group relative w-10 h-10 rounded-full ${link.gradientClass} flex items-center justify-center text-white text-sm transform transition-all duration-300 hover:scale-110 hover:shadow-lg`}
+                aria-label={link.name}
+              >
+                <span className="relative z-10 transform group-hover:scale-125 transition-transform duration-300">
+                  {link.icon}
+                </span>
+              </a>
+            ))}
+          </div>
+        </div>
+
+        {/* 下部: 追加情報 */}
+        <div className="pt-4 border-t border-gray-200/50">
+          <p className="text-xs text-center text-gray-500 font-light">
+            Made with <span className="text-pink-500">♥</span> using Next.js & Tailwind CSS
+          </p>
+        </div>
+      </footer>
     </div>
   );
 }
