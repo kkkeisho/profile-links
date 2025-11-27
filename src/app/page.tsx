@@ -111,6 +111,10 @@ export default function Home() {
         </div>
       </main>
 
+      {/* Pull Request Test */}
+      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-sm text-gray-500">
+        This is a pull request test
+      </div>
     </div>
   );
 }
